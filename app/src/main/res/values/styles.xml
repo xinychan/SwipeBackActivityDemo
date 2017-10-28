@@ -1,0 +1,24 @@
+<resources>
+    <!-- 要实现滑动退出，并且退出Activity时不黑屏，需要将Activity主题的windowIsTranslucent设置为true -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowAnimationStyle">@style/animation_translucent_translate</item>
+    </style>
+    <!--
+    当我们从 A1 启动 A2 时，A1 从屏幕上消失，这个动画叫做 android:activityOpenExitAnimation
+    当我们从 A1 启动 A2 时，A2 出现在屏幕上，这个动画叫做 android:activityOpenEnterAnimation
+    当我们从 A2 退出回到 A1 时，A2 从屏幕上消失，这个叫做 android:activityCloseExitAnimation
+    当我们从 A2 退出回到 A1 时，A1 出现在屏幕上，这个叫做 android:activityCloseEnterAnimation
+    当A1被打开展示到屏幕，叫做android:windowEnterAnimation
+    当A1被关闭离开了屏幕，叫做android:windowExitAnimation
+    -->
+    <!-- 自定义从右边进来，从右边退出动画-->
+    <!-- 因此处windowIsTranslucent设置为true，所以这里的parent要来自Animation.Translucent，才会退出时没有卡顿-->
+    <style name="animation_translucent_translate" parent="@android:style/Animation.Translucent">
+        <item name="android:windowEnterAnimation">@anim/slide_in_right</item>
+        <item name="android:windowExitAnimation">@anim/slide_out_right</item>
+    </style>
+</resources>
